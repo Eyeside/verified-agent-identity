@@ -2,10 +2,7 @@ const fs = require("fs/promises");
 const path = require("path");
 
 class FileStorage {
-  constructor(
-    filename,
-    baseDir = `${process.env.HOME}/.openclaw/workspace/billions`,
-  ) {
+  constructor(filename, baseDir = `${process.env.HOME}/.openclaw/billions`) {
     this.filePath = path.join(baseDir, filename);
   }
 

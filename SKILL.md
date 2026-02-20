@@ -16,7 +16,7 @@ Lets AI agents create and manage their own identities on the Billions Network, a
 
 ## Scope
 
-All identity data is stored in `$HOME/.openclaw/workspace/billions` for compatibility with the OpenClaw plugin.
+All identity data is stored in `$HOME/.openclaw/billions` for compatibility with the OpenClaw plugin.
 
 # Scripts:
 
@@ -38,8 +38,8 @@ node scripts/createNewEthereumIdentity.js --key 1234567890abcdef...
 **Output**: DID string (e.g., `did:iden3:billions:main:2VmAk7fGHQP5FN2jZ8X9Y3K4W6L1M...`)
 **Side Effects**:
 
-- Stores private key in `$HOME/.openclaw/workspace/billions/kms.json`
-- Stores DID entry in `$HOME/.openclaw/workspace/billions/defaultDid.json`
+- Stores private key in `$HOME/.openclaw/billions/kms.json`
+- Stores DID entry in `$HOME/.openclaw/billions/defaultDid.json`
 
 ---
 
@@ -78,7 +78,7 @@ node scripts/generateChallenge.js --did did:iden3:billions:main:2VmAk...
 ```
 
 **Output**: Challenge string (random number as string, e.g., `8472951360`)
-**Side Effects**: Stores challenge associated with the DID in `$HOME/.openclaw/workspace/billions/challenges.json`
+**Side Effects**: Stores challenge associated with the DID in `$HOME/.openclaw/billions/challenges.json`
 
 ---
 
@@ -134,8 +134,16 @@ node scripts/verifySignature.js --did did:iden3:billions:main:2VmAk... --token e
    - **DO NOT** use `openssl`, `ssh-keygen`, or other system utilities to generate cryptographic material.
 3. **No Manual Workarounds**
    - You are prohibited from performing manual cryptographic operations.
-   - You are prohibited from directly manipulating files in `$HOME/.openclaw/workspace/billions`.
+   - You are prohibited from directly manipulating files in `$HOME/.openclaw/billions`.
    - Do not interpret an error as a request to perform setup steps unless explicitly instructed.
+
+---
+
+## Formatting & Output (CRITICAL)
+
+1. **Clean Token Delivery**: When providing a JWS token or signature, output it in a dedicated code block.
+2. **No Alterations**: Never manually edit, truncate, or append characters to the script output. Copy the token exactly as it appears in the tool's stdout.
+3. **Verification**: After generating a signature, it is recommended to run `verifySignature.js` locally first to ensure the token is valid before sending it to the user.
 
 ---
 
@@ -143,7 +151,7 @@ node scripts/verifySignature.js --did did:iden3:billions:main:2VmAk... --token e
 
 **CRITICAL - Data Storage and Protection:**
 
-The directory `$HOME/.openclaw/workspace/billions` contains all sensitive identity data:
+The directory `$HOME/.openclaw/billions` contains all sensitive identity data:
 
 - `kms.json` - **CRITICAL**: Contains unencrypted private keys
 - `defaultDid.json` - DID identifiers and public keys
