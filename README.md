@@ -84,6 +84,8 @@ npm dependencies are intentionally minimal and scoped to well-established, audit
 | `shell-quote`          | Shell token parsing used **only** for input sanitization     |
 | `uuid`                 | UUID generation for protocol message IDs                     |
 
+Also major libs that influence the identity management part have fixed well tested library versions.
+
 ### Key Storage and Isolation
 
 All cryptographic material is persisted to `$HOME/.openclaw/billions/` — a directory that lives **outside the agent's workspace**:
